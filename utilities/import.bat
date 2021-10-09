@@ -101,7 +101,22 @@ for %%a in (import_these\*) do (
 	if !cfext!==.gif set CFTYPE="img" & echo Note: GIFs won't be animated, it'll just show the first frame.
 	if !cfext!==.webp echo Sorry, WebPs don't work. & echo: & goto moveconflicts
 	:: Sounds
-	if !cfext!==.mp3 set CFTYPE="sound"
+	if !cfext!==.mp3 set CFTYPE="mp3"
+	if !cftype!=="mp3" (
+		echo Press 1 if !cfname! is music or a sound effect.
+		echo Press 2 if !cfname! is a voice clip.
+		:mp3askretry
+		set /p MP3CHOICE= Response:
+		echo:
+		if "!mp3choice!"=="0" goto end
+		if "!mp3choice!"=="1" set CFTYPE="sound"
+		if "!mp3choice!"=="2" (
+			set CFTYPE="voice"
+			goto voice
+			)
+		if "!CFTYPE!"=="" echo You must answer what type of file it is. && goto mp3askretry
+		echo:
+	)
 	if !cfext!==.wav echo Sorry, WAVs don't work. & echo: & goto moveconflicts
 	if !cfext!==.ogg echo Sorry, OGGs don't work. & echo: & goto moveconflicts
 	:: Error catch
@@ -275,6 +290,37 @@ for %%a in (import_these\*) do (
 echo Zipping XML...
 7za.exe a "!themefolder!\import.zip" "!themefolder!\theme.xml" >nul
 
+:voice
+	pushd import_these
+	if !cftype!=="voice" (
+		echo Press 1 to import !cfname! into Slot 1.
+		echo Press 2 to import !cfname! into Slot 2.
+		:voiceslotaskretry
+		set /p VOICESLOTCHOICE= Response:
+		echo:
+		if "!voiceslotchoice!"=="0" goto end
+		if "!voiceslotchoice!"=="1" set VOICESLOT="1"
+		if "!voiceslotchoice!"=="2" set VOICESLOT="2"
+		if "!VOICESLOT!"=="" echo You must select a voice slot. && goto voiceslotaskretry
+		echo:
+	)
+	if !VOICESLOT!=="1" (
+	ren "!cfid!" "rewriteable1.mp3"
+	if not exist voice ( md voice )
+	move /y "rewriteable1.mp3" voice\"rewriteable1.mp3" >nul
+	echo To import the voice clip, type anything into the Import 1 text-to-speech voice.
+	echo To change the voice clip, run this importer again.
+	goto end
+)
+	if !VOICESLOT!=="2" (
+	ren "!cfid!" "rewriteable2.mp3"
+	if not exist voice ( md voice )
+	move /y "rewriteable2.mp3" voice\"rewriteable2.mp3" >nul
+	echo To import the voice clip, type anything into the Import 2 text-to-speech voice.
+	echo To change the voice clip, run this importer again.
+	goto end
+)
+	
 :end
 endlocal
 if "%SUBSCRIPT%"=="" (

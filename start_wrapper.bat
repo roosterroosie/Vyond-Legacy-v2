@@ -1,9 +1,8 @@
-:: Wrapper: Offline Launcher
-:: Author: benson#0411
+:: Vyond Legacy Launcher
+:: Author: Mapids#2658
 :: License: MIT
-set WRAPPER_VER=1.2.3
-set WRAPPER_BLD=72
-title Wrapper: Offline v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Initializing...]
+set WRAPPER_VER=1.6
+title GoAnimate 2016: Offline v%WRAPPER_VER% [Initializing...]
 
 ::::::::::::::::::::
 :: Initialization ::
@@ -23,7 +22,7 @@ if not exist wrapper ( goto error_location )
 if not exist server ( goto error_location )
 goto noerror_location
 :error_location
-echo Doesn't seem like this script is in a Wrapper: Offline folder.
+echo Doesn't seem like this script is in a Vyond Legacy folder.
 pause && exit
 :noerror_location
 
@@ -51,26 +50,26 @@ if not exist "utilities\checks" md utilities\checks
 if not exist "utilities\checks\disclaimer.txt" (
 	echo DISCLAIMER
   echo:
-	echo Wrapper: Offline is a project to preserve the original GoAnimate flash-based themes.
+	echo GoAnimate 2016: Offline is a project to preserve the original GoAnimate flash-based themes.
 	echo We believe they should be archived for others to use and learn about in the future.
-	echo All business themes have been removed, please use Vyond Studio if you wish to get those.
+	echo All business themes have been Added, please use Vyond Studio if you wish to get those.
 	echo This is still unlawful use of copyrighted material, but ^(in our opinion^) morally justifiable use.
 	echo:
 	echo We are not affiliated in any form with Vyond or GoAnimate Inc. We generate no profit from this.
 	echo We do not wish to promote piracy, and we avoid distributing content that is still in use by GoAnimate Inc.
 	echo We have tried to reduce any harm we could do to GoAnimate Inc while making this project.
 	echo:
-	echo Excluding Adobe Flash and GoAnimate Inc's assets, Wrapper: Offline is free/libre software.
+	echo Excluding Adobe Flash and GoAnimate Inc's assets, GoAnimate 2016: Offline is free/libre software.
 	echo You are free to redistribute and/or modify it under the terms of the MIT ^(aka Expat^) license,
 	echo except for some dependencies which have different licenses with slightly different rights.
 	echo Read the LICENSE file in Offline's base folder and the licenses in utilities/sourcecode for more info.
 	echo:
-	echo By continuing to use Wrapper: Offline, you acknowledge the nature of this project, and your right to use it.
-	echo If you object to any of this, feel free to close Wrapper: Offline now.
+	echo By continuing to use GoAnimate 2016: Offline, you acknowledge the nature of this project, and your right to use it.
+	echo If you object to any of this, feel free to close GoAnimate 2016: Offline now.
 	echo You will be allowed to accept 20 seconds after this message has appeared.
 	echo: 
 	PING -n 21 127.0.0.1>nul
-	echo If you still want to use Wrapper: Offline, press Y. If you no longer want to, press N.
+	echo If you still want to use GoAnimate 2016: Offline, press Y. If you no longer want to, press N.
 	:disclaimacceptretry
 	set /p ACCEPTCHOICE= Response:
 	echo:
@@ -85,9 +84,9 @@ if not exist "utilities\checks\disclaimer.txt" (
 )
 
 :: Welcome, Director Ford!
-echo Wrapper: Offline
-echo A project from VisualPlugin adapted by GoTest334 and the Wrapper: Offline team
-echo Version !WRAPPER_VER!, build !WRAPPER_BLD!
+echo GoAnimate 2016: Offline
+echo A project from VisualPlugin adapted by MapidsAnimate
+echo Version !WRAPPER_VER!
 echo:
 
 :: Confirm measurements to proceed.
@@ -124,7 +123,7 @@ if !VERBOSEWRAPPER!==n (
 	echo:
 )
 
-title Wrapper: Offline v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Checking dependencies...]
+title GoAnimate 2016: Offline v!WRAPPER_VER! [Checking dependencies...]
 
 :: Preload variables
 set NEEDTHEDEPENDERS=n
@@ -297,7 +296,7 @@ if !NEEDTHEDEPENDERS!==y (
 	goto skip_dependency_install
 )
 
-title Wrapper: Offline v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Installing dependencies...]
+title GoAnimate 2016: Offline v!WRAPPER_VER! [Installing dependencies...]
 
 :: Preload variables
 set INSTALL_FLAGS=ALLUSERS=1 /norestart
@@ -310,7 +309,7 @@ if /i "!processor_architecture!"=="AMD64" set CPU_ARCHITECTURE=64
 if /i "!PROCESSOR_ARCHITEW6432!"=="AMD64" set CPU_ARCHITECTURE=64
 
 :: Check for admin if installing Flash or Node.js
-:: Skipped in Safe Mode, just in case anyone is running Wrapper in safe mode... for some reason
+:: Skipped in Safe Mode, just in case anyone is running GoAnimate 2016 in safe mode... for some reason
 :: and also because that was just there in the code i used for this and i was like "eh screw it why remove it"
 if !ADMINREQUIRED!==y (
 	if !VERBOSEWRAPPER!==y ( echo Checking for Administrator rights... && echo:)
@@ -324,16 +323,16 @@ if !ADMINREQUIRED!==y (
 			echo:
 			if !FLASH_DETECTED!==n (
 				if !NODEJS_DETECTED!==n (
-					echo Wrapper: Offline needs to install Flash and Node.js.
+					echo GoAnimate 2016: Offline needs to install Flash and Node.js.
 				) else (
-					echo Wrapper: Offline needs to install Flash.
+					echo WGoAnimate 2016: Offline needs to install Flash.
 				)
 			) else (
-				echo Wrapper: Offline needs to install Node.js.
+				echo Vyond Legacy needs to install Node.js.
 			)
 			echo To do this, it must be started with Admin rights.
 			echo:
-			echo Close this window and re-open Wrapper: Offline as an Admin.
+			echo Close this window and re-open GoAnimate 2016: Offline as an Admin.
 			echo ^(right-click start_wrapper.bat and click "Run as Administrator"^)
 			echo:
 			if !DRYRUN!==y (
@@ -359,7 +358,7 @@ if !FLASH_DETECTED!==n (
 		echo What web browser do you use? If it isn't here,
 		echo look up whether it's based on Chromium or Firefox.
 		echo If it's not based on either, then
-		echo Wrapper: Offline will not be able to install Flash.
+		echo GoAnimate 2016: Offline will not be able to install Flash.
 		echo Unless you know what you're doing and have a
 		echo version of Flash made for your browser, please
 		echo install a Chrome or Firefox based browser.
@@ -393,9 +392,9 @@ if !FLASH_DETECTED!==n (
 	)
 
 	:escape_browser_ask
-	echo To install Flash Player, Wrapper: Offline must kill any currently running web browsers.
+	echo To install Flash Player, Vyond Legacy must kill any currently running web browsers.
 	echo Please make sure any work in your browser is saved before proceeding.
-	echo Wrapper: Offline will not continue installation until you press a key.
+	echo GoAnimate 2016: Offline will not continue installation until you press a key.
 	echo:
 	pause
 	echo:
@@ -422,7 +421,7 @@ if !FLASH_DETECTED!==n (
 		echo Starting Flash for Chrome installer...
 		if not exist "utilities\installers\flash_windows_chromium.msi" (
 			echo ...erm. Bit of an issue there actually. The installer doesn't exist.
-			echo A normal copy of Wrapper: Offline should come with one.
+			echo A normal copy of Vyond Legacy should come with one.
 			echo You may be able to find a copy on this website:
 			echo https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html
 			echo Although Flash is needed, Offline will continue launching.
@@ -434,7 +433,7 @@ if !FLASH_DETECTED!==n (
 		echo Starting Flash for Firefox installer...
 		if not exist "utilities\installers\flash_windows_firefox.msi" (
 			echo ...erm. Bit of an issue there actually. The installer doesn't exist.
-			echo A normal copy of Wrapper: Offline should come with one.
+			echo A normal copy of GoAnimate 2016: Offline should come with one.
 			echo You may be able to find a copy on this website:
 			echo https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html
 			echo Although Flash is needed, Offline will try to install anything else it can.
@@ -458,7 +457,7 @@ if !NODEJS_DETECTED!==n (
 		if !VERBOSEWRAPPER!==y ( echo 64-bit system detected, installing 64-bit Node.js. )
 		if not exist "utilities\installers\node_windows_x64.msi" (
 			echo We have a problem. The 64-bit Node.js installer doesn't exist.
-			echo A normal copy of Wrapper: Offline should come with one.
+			echo A normal copy of GoAnimate 2016: Offline should come with one.
 			echo You should be able to find a copy on this website:
 			echo https://nodejs.org/en/download/
 			echo Although Node.js is needed, Offline will try to install anything else it can.
@@ -466,7 +465,7 @@ if !NODEJS_DETECTED!==n (
 			goto after_nodejs_install
 		)
 		echo Proper Node.js installation doesn't seem possible to do automatically.
-		echo You can just keep clicking next until it finishes, and Wrapper: Offline will continue once it closes.
+		echo You can just keep clicking next until it finishes, and GoAnimate 2016: Offline will continue once it closes.
 		if !DRYRUN!==n ( msiexec /i "utilities\installers\node_windows_x64.msi" !INSTALL_FLAGS! )
 		goto nodejs_installed
 	)
@@ -474,7 +473,7 @@ if !NODEJS_DETECTED!==n (
 		if !VERBOSEWRAPPER!==y ( echo 32-bit system detected, installing 32-bit Node.js. )
 		if not exist "utilities\installers\node_windows_x32.msi" (
 			echo We have a problem. The 32-bit Node.js installer doesn't exist.
-			echo A normal copy of Wrapper: Offline should come with one.
+			echo A normal copy of  GoAnimate 2016: Offline should come with one.
 			echo You should be able to find a copy on this website:
 			echo https://nodejs.org/en/download/
 			echo Although Node.js is needed, Offline will try to install anything else it can.
@@ -482,14 +481,14 @@ if !NODEJS_DETECTED!==n (
 			goto after_nodejs_install
 		)
 		echo Proper Node.js installation doesn't seem possible to do automatically.
-		echo You can just keep clicking next until it finishes, and Wrapper: Offline will continue once it closes.
+		echo You can just keep clicking next until it finishes, and Vyond Legacy will continue once it closes.
 		if !DRYRUN!==n ( msiexec /i "utilities\installers\node_windows_x32.msi" !INSTALL_FLAGS! )
 		goto nodejs_installed
 	)
 	if !CPU_ARCHITECTURE!==what (
 		echo:
 		echo Well, this is a little embarassing.
-		echo Wrapper: Offline can't tell if you're on a 32-bit or 64-bit system.
+		echo Vyond Legacy can't tell if you're on a 32-bit or 64-bit system.
 		echo Which means it doesn't know which version of Node.js to install...
 		echo:
 		echo If you have no idea what that means, press 1 to just try anyway.
@@ -537,7 +536,7 @@ if !HTTPSERVER_DETECTED!==n (
 			echo:
 			if not exist "utilities\installers\http-server-master" (
 				echo Well, we'd try that if the files existed.
-				echo A normal copy of Wrapper: Offline should come with them.
+				echo A normal copy of Vyond Legacy should come with them.
 				echo You should be able to find a copy on this website:
 				echo https://www.npmjs.com/package/http-server
 				echo Although http-server is needed, Offline will try to install anything else it can.
@@ -567,7 +566,7 @@ if !HTTPSERVER_DETECTED!==n (
 		color cf
 		echo:
 		echo http-server is missing, but somehow Node.js has not been installed yet.
-		echo Seems either the install failed, or Wrapper: Offline managed to skip it.
+		echo Seems either the install failed, or Vyond Legacy managed to skip it.
 		echo If installing directly from nodejs.org does not work, something is horribly wrong.
 		echo Please ask for help in the #support channel on Discord, or email me.
 		pause
@@ -586,8 +585,8 @@ if !HTTPSCERT_DETECTED!==n (
 	echo:
 	if not exist "server\the.crt" (
 		echo ...except it doesn't exist for some reason.
-		echo Wrapper: Offline requires this to run.
-		echo You should get a "the.crt" file from someone else, or redownload Wrapper: Offline.
+		echo Vyond Legacy requires this to run.
+		echo You should get a "the.crt" file from someone else, or redownload Vyond Legacy.
 		echo Offline has nothing left to do since it can't launch without the.crt, so it will close.
 		pause
 		exit
@@ -597,7 +596,7 @@ if !HTTPSCERT_DETECTED!==n (
 		fsutil dirty query !systemdrive! >NUL 2>&1
 		if /i not !ERRORLEVEL!==0 (
 			if !VERBOSEWRAPPER!==n ( cls )
-			echo For Wrapper: Offline to work, it needs an HTTPS certificate to be installed.
+			echo For GoAnimate 2016: Offline to work, it needs an HTTPS certificate to be installed.
 			echo If you have administrator privileges, you should reopen start_wrapper.bat as Admin.
 			echo ^(do this by right-clicking start_wrapper.bat and click "Run as Administrator"^)
 			echo:
@@ -631,7 +630,7 @@ if !HTTPSCERT_DETECTED!==n (
 				)
 			) else (
 				pushd utilities\ungoogled-chromium
-				start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile https://localhost:4664/certbypass.html >nul
+				start chrome.exe --user-data-dir=the_profile https://localhost:4664/certbypass.html >nul
 				popd
 			)
 			pause
@@ -652,18 +651,18 @@ if !HTTPSCERT_DETECTED!==n (
 )
 :after_cert_install
 
-:: Alert user to restart Wrapper without running as Admin
+:: Alert user to restart GoAnimate without running as Admin
 if !ADMINREQUIRED!==y (
 	color 20
 	if !VERBOSEWRAPPER!==n ( cls )
 	echo:
 	echo Dependencies needing Admin now installed^^!
 	echo:
-	echo Wrapper: Offline no longer needs Admin rights,
+	echo GoAnimate 2016: Offline no longer needs Admin rights,
 	echo please restart normally by double-clicking.
 	echo:
 	echo If you saw this from running normally,
-	echo Wrapper: Offline should continue normally after a restart.
+	echo Vyond Legacy should continue normally after a restart.
 	echo:
 	if !DRYRUN!==y (
 		echo ...you enjoying the dry run experience? Skipping closing.
@@ -675,61 +674,36 @@ if !ADMINREQUIRED!==y (
 	exit
 )
 color 0f
-echo All dependencies now installed^^! Continuing with Wrapper: Offline boot.
+echo All dependencies now installed^^! Continuing with Vyond Legacy boot.
 echo:
 
 :skip_dependency_install
 
-::::::::::::::::::::::
-:: Starting Wrapper ::
-::::::::::::::::::::::
+:::::::::::::::::::::::::::::
+:: Starting GoAnimate 2016 ::
+:::::::::::::::::::::::::::::
 
-title Wrapper: Offline v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Loading...]
+title GoAnimate 2016: Offline v!WRAPPER_VER! [Loading...]
 
 :: Close existing node apps
 :: Hopefully fixes EADDRINUSE errors??
 if !VERBOSEWRAPPER!==y (
-	if !CEPSTRAL!==n (
-		echo Closing any existing node and/or PHP apps...
-		if !DRYRUN!==n ( TASKKILL /IM node.exe /F )
-		if !DRYRUN!==n ( TASKKILL /IM php.exe /F )
-		echo:
-	) else (
-		echo Closing any existing node apps...
-		if !DRYRUN!==n ( TASKKILL /IM node.exe /F )
-	)
+	echo Closing any existing node apps...
+	if !DRYRUN!==n ( TASKKILL /IM node.exe /F )
+	echo:
 ) else (
-	if !CEPSTRAL!==n (
-		if !DRYRUN!==n ( TASKKILL /IM node.exe /F 2>nul )
-		if !DRYRUN!==n ( TASKKILL /IM php.exe /F 2>nul )
-	) else (
-		if !DRYRUN!==n ( TASKKILL /IM node.exe /F 2>nul )
-	)
+	if !DRYRUN!==n ( TASKKILL /IM node.exe /F 2>nul )
 )
 
-:: Start Node.js, http-server and PHP for VFProxy
-if !CEPSTRAL!==n (
-	echo Loading Node.js, http-server and PHP ^(for VFProxy only^)...
-) else (
-	echo Loading Node.js and http-server...
-)
+:: Start Node.js and http-server
+echo Loading Node.js and http-server...
 pushd utilities
 if !VERBOSEWRAPPER!==y (
 	if !DRYRUN!==n ( start /MIN open_http-server.bat )
 	if !DRYRUN!==n ( start /MIN open_nodejs.bat )
-	if !DRYRUN!==n ( 
-		if !CEPSTRAL!==n ( 
-			start /MIN open_vfproxy_php.bat
-		)
-	)
 ) else (
 	if !DRYRUN!==n ( start SilentCMD open_http-server.bat )
 	if !DRYRUN!==n ( start SilentCMD open_nodejs.bat )
-	if !DRYRUN!==n ( 
-		if !CEPSTRAL!==n (
-			start SilentCMD open_vfproxy_php.bat
-		)
-	)
 )
 popd
 
@@ -740,39 +714,39 @@ PING -n 6 127.0.0.1>nul
 :: Open Wrapper in preferred browser
 if !INCLUDEDCHROMIUM!==n (
 	if !CUSTOMBROWSER!==n (
-		echo Opening Wrapper: Offline in your default browser...
-		if !DRYRUN!==n ( start http://localhost:4343 )
+		echo Opening GoAnimate 2016: Offline in your default browser...
+		if !DRYRUN!==n ( start http://localhost:2019 )
 	) else (
-		echo Opening Wrapper: Offline in your set browser...
+		echo Opening GoAnimate 2016: Offline in your set browser...
 		echo If this does not work, you may have set the path wrong.
-		if !DRYRUN!==n ( start !CUSTOMBROWSER! http://localhost:4343 )
+		if !DRYRUN!==n ( start !CUSTOMBROWSER! http://localhost:2019 )
 	)
 ) else (
-	echo Opening Wrapper: Offline using included Chromium...
+	echo Opening GoAnimate 2016: Offline using included Chromium...
 	pushd utilities\ungoogled-chromium
 	if !APPCHROMIUM!==y (
-		if !DRYRUN!==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=http://localhost:4343 )
+		if !DRYRUN!==n ( start chrome.exe --user-data-dir=the_profile --app=http://localhost:2019 )
 	) else (
-		if !DRYRUN!==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile http://localhost:4343 )
+		if !DRYRUN!==n ( start chrome.exe --user-data-dir=the_profile http://localhost:2019 )
 	)
 	popd
 )
 
-echo Wrapper: Offline has been started^^! The video list should now be open.
+echo GoAnimate 2016: Offline has been started^^! The video list should now be open.
 
 ::::::::::::::::
 :: Post-Start ::
 ::::::::::::::::
 
-title Wrapper: Offline v!WRAPPER_VER! ^(build !WRAPPER_BLD!^)
+title GoAnimate 2016: Offline v!WRAPPER_VER!
 if !VERBOSEWRAPPER!==y ( goto wrapperstarted )
 :wrapperstartedcls
 cls
 :wrapperstarted
 
 echo:
-echo Wrapper: Offline v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) running
-echo A project from VisualPlugin adapted by GoTest334 and the Wrapper: Offline team
+echo GoAnimate 2016: Offline v!WRAPPER_VER! running
+echo A project from VisualPlugin adapted by MapidsAnimate
 echo:
 if !VERBOSEWRAPPER!==n ( echo DON'T CLOSE THIS WINDOW^^! Use the quit option ^(0^) when you're done. )
 if !VERBOSEWRAPPER!==y ( echo Verbose mode is on, see the two extra CMD windows for extra output. )
@@ -785,7 +759,7 @@ echo Enter 2 to import a file
 echo Enter 3 to open the server page
 echo Enter ? to open the FAQ
 echo Enter clr to clean up the screen
-echo Enter 0 to close Wrapper: Offline
+echo Enter 0 to close GoAnimate 2016: Offline
 set /a _rand=(!RANDOM!*67/32768)+1
 if !_rand!==25 echo Enter things you think'll show a secret if you're feeling adventurous
 :wrapperidle
@@ -813,10 +787,6 @@ if /i "!choice!"=="watch benson on youtube" goto w_a_t_c_h
 if /i "!choice!"=="browser slayer" goto slayerstestaments
 if /i "!choice!"=="patch" goto patchtime
 if /i "!choice!"=="random" goto sayarandom
-if /i "!choice!"=="narutofan420" echo i am narutofan420 i am a naruto fan i watch naruto i watched all 3 series and still watch it & goto wrapperidle
-if /i "!choice!"=="die" echo die please & goto wrapperidle
-if /i "!choice!"=="aaron doan" echo YOU^^!^^!^^! Noo Wrapper Is Patched Forever^^!^^!^^! Cries And Hits You So Many Times & goto wrapperidle
-if /i "!choice!"=="spark" echo WHY DID SOMEONE FUCK UP THE LAUNCHER? & goto wrapperidle
 :: dev options
 if /i "!choice!"=="amnesia" goto wipe_save
 if /i "!choice!"=="restart" goto restart
@@ -826,19 +796,19 @@ echo Time to choose. && goto wrapperidle
 :reopen_webpage
 if !INCLUDEDCHROMIUM!==n (
 	if !CUSTOMBROWSER!==n (
-		echo Opening Wrapper: Offline in your default browser...
-		start http://localhost:4343
+		echo Opening GoAnimate 2016: Offline in your default browser...
+		start http://localhost:2019
 	) else (
-		echo Opening Wrapper: Offline in your set browser...
-		start !CUSTOMBROWSER! http://localhost:4343 >nul
+		echo Opening GoAnimate 2016: Offline in your set browser...
+		start !CUSTOMBROWSER! http://localhost:2019 >nul
 	)
 ) else (
-	echo Opening Wrapper: Offline using included Chromium...
+	echo Opening GoAnimate 2016: Offline using included Chromium...
 	pushd utilities\ungoogled-chromium
 	if !APPCHROMIUM!==y (
-		start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=http://localhost:4343 >nul
+		start chrome.exe --user-data-dir=the_profile --app=http://localhost:2019 >nul
 	) else (
-		start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile http://localhost:4343 >nul
+		start chrome.exe --user-data-dir=the_profile http://localhost:2019 >nul
 	)
 	popd
 )
@@ -857,9 +827,9 @@ if !INCLUDEDCHROMIUM!==n (
 	echo Opening the server page using included Chromium...
 	pushd utilities\ungoogled-chromium
 	if !APPCHROMIUM!==y (
-		start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=https://localhost:4664 >nul
+		start chrome.exe --user-data-dir=the_profile --app=https://localhost:4664 >nul
 	) else (
-		start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile https://localhost:4664 >nul
+		start chrome.exe --user-data-dir=the_profile https://localhost:4664 >nul
 	)
 	popd
 )
@@ -876,7 +846,7 @@ goto wrapperidle
 echo Opening the importer...
 call utilities\import.bat
 cls
-title Wrapper: Offline v!WRAPPER_VER! ^(build !WRAPPER_BLD!^)
+title GoAnimate 2016: Offline v!WRAPPER_VER!
 set JUSTIMPORTED=y
 goto wrapperstartedcls
 
@@ -1008,7 +978,7 @@ goto wrapperidle
 :: Confirmation before shutting down
 :exitwrapperconfirm
 echo:
-echo Are you sure you want to quit Wrapper: Offline?
+echo Are you sure you want to quit GoAnimate 2016: Offline?
 echo Be sure to save all your work.
 echo Type Y to quit, and N to go back.
 :exitwrapperretry
@@ -1023,20 +993,18 @@ echo You must answer Yes or No. && goto exitwrapperretry
 
 :point_extraction
 
-title Wrapper: Offline v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Shutting down...]
+title GoAnimate 2016: Offline v!WRAPPER_VER! [Shutting down...]
 
-:: Shut down Node.js, PHP and http-server
+:: Shut down Node.js and http-server
 if !VERBOSEWRAPPER!==y (
 	if !DRYRUN!==n ( TASKKILL /IM node.exe /F )
-	if !DRYRUN!==n ( TASKKILL /IM php.exe /F )
 	echo:
 ) else (
 	if !DRYRUN!==n ( TASKKILL /IM node.exe /F 2>nul )
-	if !DRYRUN!==n ( TASKKILL /IM php.exe /F 2>nul )
 )
 
 :: This is where I get off.
-echo Wrapper: Offline has been shut down.
+echo GoAnimate 2016: Offline has been shut down.
 if !FUCKOFF!==y ( echo You're a good listener. )
 echo This window will now close.
 if !INCLUDEDCHROMIUM!==y (
@@ -1047,7 +1015,7 @@ if !DRYRUN!==y ( echo Go wet your run next time. )
 pause & exit
 
 :exitwithstyle
-title Wrapper: Offline v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Shutting down... WITH STYLE]
+title GoAnimate 2016: Offline v!WRAPPER_VER! [Shutting down... WITH STYLE]
 echo SHUTTING DOWN THE WRAPPER OFFLINE
 PING -n 3 127.0.0.1>nul
 color 9b
@@ -1055,9 +1023,6 @@ echo BEWEWEWEWWW PSSHHHH KSHHHHHHHHHHHHHH
 PING -n 3 127.0.0.1>nul
 TASKKILL /IM node.exe /F
 echo NODE DOT JS ANNIHILATED
-PING -n 3 127.0.0.1>nul
-TASKKILL /IM php.exe /F
-echo PHP DESTROYED
 PING -n 3 127.0.0.1>nul
 echo TIME TO ELIMINATE WRAPPER OFFLINE
 PING -n 3 127.0.0.1>nul
@@ -1084,7 +1049,7 @@ goto grr
 
 :configcopy
 if not exist utilities ( md utilities )
-echo :: Wrapper: Offline Config>> utilities\config.bat
+echo :: Vyond Legacy Config>> utilities\config.bat
 echo :: This file is modified by settings.bat. It is not organized, but comments for each setting have been added.>> utilities\config.bat
 echo :: You should be using settings.bat, and not touching this. Offline relies on this file remaining consistent, and it's easy to mess that up.>> utilities\config.bat
 echo:>> utilities\config.bat

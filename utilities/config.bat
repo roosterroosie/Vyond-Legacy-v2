@@ -23,7 +23,7 @@ set INCLUDEDCHROMIUM=y
 set APPCHROMIUM=y
 
 :: Opens Offline in a browser of the user's choice. Needs to be a path to a browser executable in quotes. Default: n
-set CUSTOMBROWSER=n
+set CUSTOMBROWSER=C:\Users\ohohl\Documents\Vyond-Legacy\utilities\ungoogled-chromium\chrome.exe
 
 :: Lets the launcher know what browser framework is being used. Mostly used by the Flash installer. Accepts "chrome", "firefox", and "n". Default: n
 set BROWSER_TYPE=chrome

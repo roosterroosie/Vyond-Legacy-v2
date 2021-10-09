@@ -3393,6 +3393,14 @@
 			"arg": "Salli",
 			"desc": "Salli"
 		},
+		"salli1": {
+			"country": "US",
+			"language": "en",
+			"gender": "F",
+			"source": "readloud",
+			"arg": "/english/american/2-girl-s-voice-sally.html",
+			"desc": "Salli (Old)"
+		},
 		"joey": {
 			"country": "US",
 			"language": "en",
@@ -4294,6 +4302,22 @@
 			"source": "wavenet",
 			"arg": "es-ES-Standard-B",
 			"desc": "es-ER-Standard-B"
+		},
+		"Import": {
+			"country": "",
+			"language": "any",
+			"gender": "M",
+			"source": "import",
+			"arg": "import",
+			"desc": "Import Slot 1"
+		},
+		"Import2": {
+			"country": "",
+			"language": "any",
+			"gender": "F",
+			"source": "import2",
+			"arg": "import",
+			"desc": "Import Slot 2"
 		}
 	},
 	"languages": {
@@ -4326,6 +4350,7 @@
 		"ko": "Korean",
 		"pl": "Polish",
 		"nl": "Dutch",
-		"cy": "Welsh"
+		"cy": "Welsh",
+		"any": "Any Language"
 	}
 }

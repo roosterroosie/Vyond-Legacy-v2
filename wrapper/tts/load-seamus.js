@@ -374,36 +374,57 @@ function processVoice(voiceName, text) {
 			*/
 			case "readloud": {
 				const req = https.request(
-					{
-						host: "readloud.net",
-						path: voice.arg,
-						method: "POST",
-						port: "443",
-						headers: {
-							"Content-Type": "application/x-www-form-urlencoded",
-						},
-					},
-					(r) => {
-						var buffers = [];
-						r.on("data", (d) => buffers.push(d));
-						r.on("end", () => {
-							const html = Buffer.concat(buffers);
-							const beg = html.indexOf("/tmp/");
-							const end = html.indexOf(".mp3", beg) + 4;
-							const sub = html.subarray(beg, end).toString();
-							const loc = `https://readloud.net${sub}`;
-							get(loc).then(res).catch(rej);
-						});
-						r.on("error", rej);
-					}
-				);
-				req.end(
-					qs.encode({
-						but1: text,
-						but: "Submit",
-					})
-				);
-				break;
+ 			       {
+			            host: "readloud.net",
+			            port: 443,
+			            path: voice.arg,
+			            method: "POST",
+			            headers: {
+			                "Content-Type": "application/x-www-form-urlencoded",
+			                "User-Agent":
+			                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36",
+			            },
+			        },
+			        (r) => {
+			            var buffers = [];
+			            r.on("data", (d) => buffers.push(d));
+			            r.on("end", () => {
+			                const html = Buffer.concat(buffers);
+			                const beg = html.indexOf("/tmp/");
+			                const end = html.indexOf(".mp3", beg) + 4;
+			                const sub = html.subarray(beg, end).toString();
+			                const loc = `https://readloud.net${sub}`;
+			
+			                https.get(
+			                    {
+			                        host: "readloud.net",
+ 			                       path: sub,
+ 			                       headers: {
+			                            "Content-Type": "application/x-www-form-urlencoded",
+ 			                           "User-Agent":
+  			                              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36",
+ 			                       },
+ 			                   },
+ 			                   (r) => {
+ 			                       buffers = [];
+ 			                       r.on("data", (d) => buffers.push(d));
+ 			                       r.on("end", () => res(Buffer.concat(buffers)));
+  			                  }
+ 			               );
+ 			           });
+ 			           r.on("error", rej);
+  			      }
+  			  );
+ 			   req.end(
+ 			       qs.encode({
+ 			           but1: text,
+ 			           butS: 0,
+ 			           butP: 0,
+  			          butPauses: 0,
+ 			           but: "Submit",
+ 			       })
+ 			   );
+ 			   break;
 			}
 			case "cereproc": {
 				const req = https.request(
@@ -435,6 +456,46 @@ function processVoice(voiceName, text) {
 				);
 				req.end(
 					`<speakExtended key='666'><voice>${voice.arg}</voice><text>${text}</text><audioFormat>mp3</audioFormat></speakExtended>`
+				);
+				break;
+			}
+			case "import": {
+				var q = qs.encode({
+					voice: voice.arg,
+					msg: text,
+				});
+				http.get(
+					{
+						host: "localhost",
+						port: "4334",
+						path: `/rewriteable1.mp3`,
+					},
+					(r) => {
+						var buffers = [];
+						r.on("data", (d) => buffers.push(d));
+						r.on("end", () => res(Buffer.concat(buffers)));
+						r.on("error", rej);
+					}
+				);
+				break;
+			}
+			case "import2": {
+				var q = qs.encode({
+					voice: voice.arg,
+					msg: text,
+				});
+				http.get(
+					{
+						host: "localhost",
+						port: "4334",
+						path: `/rewriteable2.mp3`,
+					},
+					(r) => {
+						var buffers = [];
+						r.on("data", (d) => buffers.push(d));
+						r.on("end", () => res(Buffer.concat(buffers)));
+						r.on("error", rej);
+					}
 				);
 				break;
 			}

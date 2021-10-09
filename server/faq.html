@@ -12,7 +12,7 @@
 
 <header>
 	<div>
-		<h1 style="margin:0"><img id="logo" src="logo.svg" alt="Wrapper: Offline"/></h1>
+		<h1 style="margin:0"><img id="logo" src="logo.png" alt="Vyond Legacy"/></h1>
 	</div>
 </header>
 
@@ -22,7 +22,7 @@
 <p>This file contains tons of useful information based on questions I get a lot about the project. This file’s a little visually noisy, but feel free to CTRL+F and skim through the headers to find what you want.</p>
 
 <p><a href="https://localhost:4664">Click here for the server homepage</a><br />
-	<a href="http://localhost:4343">Click here for the video list</a></p>
+	<a href="http://localhost:2019/pages/html/list.html">Click here for the video list</a></p>
 
 <h2 id="about-wrapper-offline">About Wrapper: Offline</h2>
 
@@ -77,9 +77,9 @@ On your first run:</p>
 
 <p>Every time you want to start:</p>
 <ol>
-  <li>In a terminal, go to the folder named “server”  and enter http-server -p 4343 -S -C the.crt -K the.key</li>
+  <li>In a terminal, go to the folder named “server”  and enter http-server -p 2019/pages/html/list.html -S -C the.crt -K the.key</li>
   <li>Now in a new terminal window, go to the folder named “wrapper” and enter npm start</li>
-  <li>Open your preferred browser and enter localhost:4343 in the address bar.</li>
+  <li>Open your preferred browser and enter localhost:2019/pages/html/list.html in the address bar.</li>
 </ol>
 
 <h3 id="can-i-make-wrapper-offline-smaller">Can I make Wrapper: Offline smaller?</h3>
@@ -107,7 +107,7 @@ On your first run:</p>
 <p>There’s likely not much way to solve this on your own. You should turn on VERBOSEWRAPPER in settings.bat, open a command prompt window, drag start_wrapper.bat onto it, and run it. Then, when it crashes, take a screenshot and post it in our Discord server. If you’re tech savvy enough to understand whatever error pops up, feel free to elaborate.</p>
 
 <h3 id="the-editorcharacter-creator-wont-load">The editor/character creator won’t load!</h3>
-<p>The cause of this is usually an error with http-server, the software Offline uses to host the asset files. To see its output, turn on VERBOSEWRAPPER in settings.bat. If there’s an error, then you might just have to ask for support in the Discord. If there’s no error however, you might simply have to make your browser trust the HTTPS certificate. Normally this is automatically fixed by the launcher, but it may have broken, and Firefox users simply have to deal with this sadly. Because, as a Firefox user, Firefox has to be <strong>special</strong>. This is not a concern beyond annoyance, as you’re just connecting to yourself and nobody else can connect. But if you see a notice like this on a real website, <em>that</em> is a cause for concern and you should avoid the website. To fix this, you can visit <a href="https://localhost:4343">https://localhost:4343</a> or open the server page with the launcher, and add a security exception.</p>
+<p>The cause of this is usually an error with http-server, the software Offline uses to host the asset files. To see its output, turn on VERBOSEWRAPPER in settings.bat. If there’s an error, then you might just have to ask for support in the Discord. If there’s no error however, you might simply have to make your browser trust the HTTPS certificate. Normally this is automatically fixed by the launcher, but it may have broken, and Firefox users simply have to deal with this sadly. Because, as a Firefox user, Firefox has to be <strong>special</strong>. This is not a concern beyond annoyance, as you’re just connecting to yourself and nobody else can connect. But if you see a notice like this on a real website, <em>that</em> is a cause for concern and you should avoid the website. To fix this, you can visit <a href="https://localhost:2019/pages/html/list.html">https://localhost:2019/pages/html/list.html</a> or open the server page with the launcher, and add a security exception.</p>
 
 <h2 id="a-feature-isnt-hereworking">A feature isn’t here/working!</h2>
 
